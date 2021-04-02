@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+            border-radius: 5px;
+        }
+        /* 输入框部分*/
+        
+        .box {
+            margin: 100px auto;
+            margin-bottom: 0px;
+            overflow: hidden;
+            width: 669px;
+        }
+        
+        .box textarea {
+            padding: 5px;
+            resize: none;
+            font-size: 16px;
+            font-weight: 550;
+            line-height: 20px;
+        }
+        
+        button {
+            float: right;
+        }
+        
+        button:hover {
+            background-color: #fafafaf6;
+        }
+        /* 评论区部分 */
+        
+        .comment {
+            margin: 20px auto;
+            border: 1px solid black;
+            overflow: auto;
+            width: 669px;
+            height: 500px;
+        }
+        
+        .comment .list {
+            width: 100%;
+        }
+        
+        .list li {
+            padding: 3px 5px 0px 5px;
+            list-style: none;
+            font: 500 16px 'Microsoft yahei';
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <textarea name="" id="" cols="80" rows="10"></textarea>
+        <button>点击发布</button>
+    </div>
+    <div class="comment">
+        <ul class="list">
+
+        </ul>
+    </div>
+
+    <script>
+        // 1、获取元素
+        let btn = document.querySelector('button');
+        let text = btn.previousElementSibling;
+        let ul = document.querySelector('ul');
+        //2、注册事件
+        btn.onclick = function() {
+            let li = document.createElement('li');
+            if (text.value == '') {
+                alert('请输入文字。');
+            } else {
+                li.innerHTML = text.value;
+                ul.insertBefore(li, ul.children[0]);
+                text.value = '';
+            }
+        }
+    </script>
+</body>
+
+</html>
